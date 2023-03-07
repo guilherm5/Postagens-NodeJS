@@ -19,10 +19,12 @@ router.get('/posts', function(req, res){
 })
 
 
+//Crud de categoria
 router.get('/categorias', function(req, res){
     Categoria.find().lean().then((categorias) =>{
         res.render("admin/categorias", {categorias: categorias})
     }).catch((err) =>{
+        req.flash("error_msg", "Erro ao exibir categorias")
         console.log("Erro ao exibir categorias ", err)
     })
 })
